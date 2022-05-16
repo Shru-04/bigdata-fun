@@ -13,9 +13,9 @@ ENV PATH $HBASE_HOME/bin/:$PATH
 
 # Get HBase 
 ENV HBASE_VERSION 1.3.0
-ENV HBASE_DIST http://mirrors.ukfast.co.uk/sites/ftp.apache.org/hbase/$HBASE_VERSION/hbase-$HBASE_VERSION-bin.tar.gz   
+ENV HBASE_DIST https://archive.apache.org/dist/hbase/$HBASE_VERSION/hbase-$HBASE_VERSION-bin.tar.gz   
 
-RUN curl --silent -fSL "$HBASE_DIST" -o /tmp/hbase.tar.gz && \
+RUN curl -fSL "$HBASE_DIST" -o /tmp/hbase.tar.gz && \
     tar -xf /tmp/hbase.tar.gz -C /opt/ && \
     rm -f /tmp/hbase.tar.gz && \
     mv /opt/hbase-* $HBASE_HOME 
@@ -24,7 +24,7 @@ ENV INDEXER_HOME /opt/hbase-indexer
 
 # Install the Lily (HBase Indexer)
 RUN cd /tmp && \
-    wget --quiet https://github.com/NGDATA/hbase-indexer/archive/master.zip && \
+    wget https://github.com/Shru-04/hbase-indexer/archive/master.zip && \
 	unzip master.zip && \
     rm master.zip && \
     cd hbase-indexer-master && \ 
